@@ -1,3 +1,16 @@
 import pandas as pd   #导入pandas数据库
 info = pd.read_excel('./cumcm2018c1.xlsx')    #导入数据
 info.shape   #查看数据形状
+info.keys()    #查看键
+#去重
+info_drop_duplicates = info.drop_duplicates()    #五重复值
+info_drop_duplicates
+#缺失值处理
+info_drop_duplicates.isnull().sum()   #有缺失值
+info_dropna = info_drop_duplicates.dropna()   #删除缺失值
+info_dropna     #打印
+#异常值处理
+info_dropna['csrq'].dtype    #查看出生日期的数据类型
+pd.Timestamp.max    #查看时间的范围
+#第二张表处理
+market = pd.read_csv('./cumcm2018c2.csv')
