@@ -14,3 +14,4 @@ info_dropna['csrq'].dtype    #查看出生日期的数据类型
 pd.Timestamp.max    #查看时间的范围
 #第二张表处理
 market = pd.read_csv('./cumcm2018c2.csv')
+market.shape
