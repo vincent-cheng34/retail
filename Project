@@ -1,21 +1,22 @@
 import pandas as pd   #导入pandas数据库
-info = pd.read_excel('./cumcm2018c1.xlsx')    #导入第一张表数据
-info.shape   #第一张表查看数据形状
-info.keys()    #第一张表查看键
+x = pd.read_excel('./cumcm2018c1.xlsx')    #导入第一张表数据
+x.shape   #第一张表查看数据形状
+x.keys()    #第一张表查看键
 #第一张表去重
-info_drop_duplicates = info.drop_duplicates()    #五重复值
-info_drop_duplicates
+x = x.drop_duplicates()    #五重复值
+x
 #第一张表缺失值处理
-info_drop_duplicates.isnull().sum()   #第一张表有缺失值
-info_dropna = info_drop_duplicates.dropna()   #第一张表删除缺失值
-info_dropna     #打印
+x.isnull().sum()   #第一张表有缺失值
+x = x.dropna()   #第一张表删除缺失值
+x     #打印
 #第一张表异常值处理
-info_dropna['csrq'].dtype    #查看出生日期的数据类型
+x['csrq'].dtype    #查看出生日期的数据类型
 pd.Timestamp.max    #查看时间的范围
 #第二张表处理
-market = pd.read_csv('./cumcm2018c2.csv')   #导入第二张表数据
-market.shape     #第二张表查看数据形态
+y = pd.read_csv('./cumcm2018c2.csv')   #导入第二张表数据
+y.shape     #第二张表查看数据形态
 #第二张表缺失值处理
-market.notnull().sum()   #查看非缺失值的总数
-market_dropna = market.dropna()   #删除第二张表缺失值
-market_dropna
+y.notnull().sum()   #查看非缺失值的总数
+y = y.dropna()   #删除第二张表缺失值
+y
+#第二张表异常值处理
