@@ -24,4 +24,6 @@ y['je'].describe()
 import matplotlib.pyplot as plt
 p = plt.boxplot(data['counts'])         #异常值箱线图
 plt.show()
-p['fliers'][0].get_ydata()  
+p['fliers'][0].get_ydata()  #提取异常值
+#合并两张表
+pd.merge(y,x,left_on = 'kh',right_on = 'kh')    #主键合并,left_on、right_on都是键
