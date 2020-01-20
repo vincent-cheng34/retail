@@ -20,3 +20,8 @@ y.notnull().sum()   #查看非缺失值的总数
 y = y.dropna()   #删除第二张表缺失值
 y
 #第二张表异常值处理
+y['je'].describe()
+import matplotlib.pyplot as plt
+p = plt.boxplot(data['counts'])         #异常值箱线图
+plt.show()
+p['fliers'][0].get_ydata()  
