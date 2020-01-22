@@ -29,4 +29,3 @@ import datetime as dt   #导入模块
 Now_year = dt.datetime.today().year    #今天的日期
 Age = Now_year - task2.dt.year      #算出年龄
 Age     #打印年龄
-import matplotlib.pyplot as plt   #导入模块
