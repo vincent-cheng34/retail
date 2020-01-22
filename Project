@@ -15,10 +15,6 @@ pd.Timestamp.max    #查看时间的范围
 #第二张表处理
 y = pd.read_csv('./cumcm2018c2.csv')   #导入第二张表数据
 y.shape     #第二张表查看数据形态
-#第二张表缺失值处理
-y.notnull().sum()   #查看非缺失值的总数
-y = y.dropna()   #删除第二张表缺失值
-y
 #第二张表异常值处理
 y['je'].describe()
 import matplotlib.pyplot as plt
