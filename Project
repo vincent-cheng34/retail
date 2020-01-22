@@ -3,7 +3,7 @@ x = pd.read_excel('./cumcm2018c1.xlsx')    #导入第一张表数据
 x.shape   #第一张表查看数据形状
 x.keys()    #第一张表查看键
 #第一张表去重
-x = x.drop_duplicates()    #五重复值
+x = x.drop_duplicates()    #无重复值
 x
 #第一张表缺失值处理
 x.isnull().sum()   #第一张表有缺失值
@@ -18,7 +18,7 @@ y.shape     #第二张表查看数据形态
 #第二张表异常值处理
 y['je'].describe()
 import matplotlib.pyplot as plt
-p = plt.boxplot(data['counts'])         #异常值箱线图
+p = plt.boxplot(y['je'])         #异常值箱线图
 plt.show()
 p['fliers'][0].get_ydata()  #提取异常值
 #合并两张表
