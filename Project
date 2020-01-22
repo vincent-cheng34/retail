@@ -29,4 +29,7 @@ import datetime as dt   #导入模块
 Now_year = dt.datetime.today().year    #今天的日期
 Age = Now_year - task2.dt.year      #算出年龄
 Age     #打印年龄
-pd.cut(Age,[15,45,59,120])    #
+Age_group = pd.cut(Age,[15,45,59,120])    #数据分段
+Age_group    #打印
+plt.pie(Age_group,labels =  ['青年','中年','老年'])     #报错
+plt.show()
