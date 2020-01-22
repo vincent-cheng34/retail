@@ -22,7 +22,7 @@ p = plt.boxplot(y['je'])         #异常值箱线图
 plt.show()
 p['fliers'][0].get_ydata()  #提取异常值
 #合并两张表
-pd.merge(y,x,left_on = 'kh',right_on = 'kh')    #主键合并,left_on、right_on都是键
+z = pd.merge(y,x,left_on = 'kh',right_on = 'kh')    #主键合并,left_on、right_on都是键
 #任务2
 task2 = pd.to_datetime(z['csrq'])   #将出生日期转换为时间格式
 import datetime as dt   #导入模块
