@@ -32,5 +32,8 @@ Age     #打印年龄
 Age_group = pd.cut(Age,[15,45,59,120])    #数据分段
 Age_group    #打印
 Age_group = Age_group.value_counts()    #统计数量然后返回饼图
-plt.pie(Age_group,labels =  ['Youth','Midlife','Elder'])     #输出饼图
+plt.pie(Age_group,labels =  ['Youth','Midlife','Elder'],autopct='%.1f%%')     #输出饼图
+plt.show()
+gender = z['xb'].value_counts()
+plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')
 plt.show()
