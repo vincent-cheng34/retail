@@ -23,7 +23,7 @@ plt.show()
 p['fliers'][0].get_ydata()  #提取异常值
 #合并两张表
 z = pd.merge(y,x,left_on = 'kh',right_on = 'kh')    #主键合并,left_on、right_on都是键
-#任务2.1
+#任务2.1-3
 task2 = pd.to_datetime(z['csrq'])   #将出生日期转换为时间格式
 import datetime as dt   #导入模块
 Now_year = dt.datetime.today().year    #今天的日期
@@ -37,10 +37,10 @@ plt.show()
 gender = z['xb'].value_counts()
 plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')
 plt.show()
-#任务2.2
+#任务2.1-4
 
 
-#任务2.3
+#任务2.1-5
 gender = z['xb'].value_counts()
 plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')
 plt.show()
