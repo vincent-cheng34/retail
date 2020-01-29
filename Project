@@ -34,13 +34,17 @@ Age_group    #打印
 Age_group = Age_group.value_counts()    #统计数量然后返回饼图
 plt.pie(Age_group,labels =  ['Youth','Midlife','Elder'],autopct='%.1f%%')     #输出饼图
 plt.show()
-gender = z['xb'].value_counts()
-plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')
-plt.show()
 #任务2.1-4
-
-
+amount = z['je'].groupby(by = Age)     #根据年龄对金额进行分类
+import numpy as np
+amount1 = amount.agg(np.sum)    #加总各个年龄的金额
+plt.pie(amount1,labels=['Youth','Midlife','Elder'],autopct='%.1f%%')    #根据年龄分类计算各年龄段的消费金额
+plt.show()
 #任务2.1-5
-gender = z['xb'].value_counts()
-plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')
+gender = z['xb'].value_counts()     #统计性别的样本数量
+plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')     #制作出性别比例饼图
+plt.show()
+amount_gender = z['je'].groupby(gender1)    #根据性别分类出金额数据
+amount_gender1 =  amount_gender.agg(np.sum)    #统计金额
+plt.pie(amount_gender1,labels=['Male','Female'],autopct='%.1f%%')    #统计female和male的消费金额做出饼图
 plt.show()
