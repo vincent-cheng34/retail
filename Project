@@ -48,3 +48,15 @@ amount_gender = z['je'].groupby(gender1)    #根据性别分类出金额数据
 amount_gender1 =  amount_gender.agg(np.sum)    #统计金额
 plt.pie(amount_gender1,labels=['Male','Female'],autopct='%.1f%%')    #统计female和male的消费金额做出饼图
 plt.show()
+#任务2.2-1
+y['kh'].isnull().sum()
+y['kh'].notnull().sum()
+y['kh'].value_counts()
+plt.pie([y['kh'].isnull().sum(),y['kh'].notnull().sum()],labels = ['member','non-member'],autopct='%.1f%%')
+plt.show()
+#任务2.2-2
+amount_member = z['je'].sum()   #会员金额
+amount_non_member = y['je'].sum() - z['je'].sum()   #非会员金额
+plt.pie([amount_member, amount_non_member],labels=['member','non_member'],autopct='%.1f%%')
+plt.show()
+#任务2.2-3
