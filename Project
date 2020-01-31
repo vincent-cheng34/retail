@@ -82,7 +82,6 @@ dtime_month   #输出结果
 amount_month = z['je'].groupby(by = [dtime_month,dtime_year])   #根据年月进行分类聚合
 amount_month_res = amount_month.agg(np.sum)   #输出各年月份加总金额
 amount_month_res
-
 x = ['2015-01','2016-01','2017-01','2018-01',
          '2015-02','2017-02',
          '2015-03','2016-03','2017-03',
@@ -95,8 +94,8 @@ x = ['2015-01','2016-01','2017-01','2018-01',
          '2016-10','2017-10',
          '2016-11','2017-11',
          '2015-12','2016-12','2017-12']
-plt.bar(x,amount_month_res,width=1.2)
-plt.xticks(x, x, rotation=70)      #调整横坐标倾斜度
+plt.bar(x,amount_month_res,width=0.5)
+plt.xticks(x, x, rotation=75)      #调整横坐标倾斜度
 plt.ylabel('Amount')
 plt.xlabel('Year-Month')
 plt.show() 
