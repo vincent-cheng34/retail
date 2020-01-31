@@ -62,7 +62,8 @@ plt.show()
 #任务2.2-3
 dtime_year = pd.to_datetime(z['dtime']).dt.year    #提取出会员消费的年份
 dtime_year
-amount_dtime = z['je'].groupby(dtime_year)
-amount_dtime1 = amount_dtime.agg(np.sum)   #加总各个年份的金额
-amount_dtime1
-plt.bar([2015,2016,2017,2018],amount_dtime1,width)
+amount_year = z['je'].groupby(dtime_year)
+amount_year1 = amount_year.agg(np.sum)   #加总各个年份的金额
+amount_year1
+plt.bar(['2015 Year','2016 Year','2017 Year','2018 Year'],amount_dtime1)
+#任务2.2-4
