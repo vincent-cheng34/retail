@@ -60,3 +60,9 @@ amount_non_member = y['je'].sum() - z['je'].sum()   #非会员金额
 plt.pie([amount_member, amount_non_member],labels=['member','non_member'],autopct='%.1f%%')
 plt.show()
 #任务2.2-3
+dtime_year = pd.to_datetime(z['dtime']).dt.year    #提取出会员消费的年份
+dtime_year
+amount_dtime = z['je'].groupby(dtime_year)
+amount_dtime1 = amount_dtime.agg(np.sum)   #加总各个年份的金额
+amount_dtime1
+plt.bar([2015,2016,2017,2018],amount_dtime1,width)
