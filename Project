@@ -67,3 +67,8 @@ amount_year1 = amount_year.agg(np.sum)   #加总各个年份的金额
 amount_year1
 plt.bar(['2015 Year','2016 Year','2017 Year','2018 Year'],amount_dtime1)
 #任务2.2-4
+dtime_month = pd.to_datetime(z['dtime']).dt.month   #提取消费月份
+dtime_month   #输出结果
+amount_month = z['je'].groupby(by = [dtime_month,dtime_year])   #根据年月进行分类聚合
+amount_month_res = amount_month.agg(np.sum)   #输出各年月份加总金额
+amount_month_res
