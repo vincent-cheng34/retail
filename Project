@@ -23,6 +23,7 @@ plt.show()
 p['fliers'][0].get_ydata()  #提取异常值
 #合并两张表
 z = pd.merge(y,x,left_on = 'kh',right_on = 'kh')    #主键合并,left_on、right_on都是键
+
 #任务2.1-3
 task2 = pd.to_datetime(z['csrq'])   #将出生日期转换为时间格式
 import datetime as dt   #导入模块
@@ -34,12 +35,14 @@ Age_group    #打印
 Age_group = Age_group.value_counts()    #统计数量然后返回饼图
 plt.pie(Age_group,labels =  ['Youth','Midlife','Elder'],autopct='%.1f%%')     #输出饼图
 plt.show()
+
 #任务2.1-4
 amount = z['je'].groupby(by = Age)     #根据年龄对金额进行分类
 import numpy as np
 amount1 = amount.agg(np.sum)    #加总各个年龄的金额
 plt.pie(amount1,labels=['Youth','Midlife','Elder'],autopct='%.1f%%')    #根据年龄分类计算各年龄段的消费金额
 plt.show()
+
 #任务2.1-5
 gender = z['xb'].value_counts()     #统计性别的样本数量
 plt.pie(gender,labels=['Male','Female'],autopct='%.1f%%')     #制作出性别比例饼图
@@ -48,17 +51,20 @@ amount_gender = z['je'].groupby(gender1)    #根据性别分类出金额数据
 amount_gender1 =  amount_gender.agg(np.sum)    #统计金额
 plt.pie(amount_gender1,labels=['Male','Female'],autopct='%.1f%%')    #统计female和male的消费金额做出饼图
 plt.show()
+
 #任务2.2-1
 y['kh'].isnull().sum()
 y['kh'].notnull().sum()
 y['kh'].value_counts()
 plt.pie([y['kh'].isnull().sum(),y['kh'].notnull().sum()],labels = ['member','non-member'],autopct='%.1f%%')
 plt.show()
+
 #任务2.2-2
 amount_member = z['je'].sum()   #会员金额
 amount_non_member = y['je'].sum() - z['je'].sum()   #非会员金额
 plt.pie([amount_member, amount_non_member],labels=['member','non_member'],autopct='%.1f%%')
 plt.show()
+
 #任务2.2-3
 dtime_year = pd.to_datetime(z['dtime']).dt.year    #提取出会员消费的年份
 dtime_year
@@ -66,10 +72,31 @@ amount_year = z['je'].groupby(dtime_year)
 amount_year1 = amount_year.agg(np.sum)   #加总各个年份的金额
 amount_year1
 plt.bar(['2015 Year','2016 Year','2017 Year','2018 Year'],amount_dtime1)
+plt.ylabel('Amount')
+plt.xlabel('Year')
 plt.show()
+
 #任务2.2-4
 dtime_month = pd.to_datetime(z['dtime']).dt.month   #提取消费月份
 dtime_month   #输出结果
 amount_month = z['je'].groupby(by = [dtime_month,dtime_year])   #根据年月进行分类聚合
 amount_month_res = amount_month.agg(np.sum)   #输出各年月份加总金额
 amount_month_res
+
+x = ['2015-01','2016-01','2017-01','2018-01',
+         '2015-02','2017-02',
+         '2015-03','2016-03','2017-03',
+         '2015-04','2016-04','2017-04',
+         '2015-05','2016-05','2017-05',
+         '2015-06','2016-06','2017-06',
+         '2015-07','2016-07','2017-07',
+         '2015-08','2016-08','2017-08',
+         '2016-09','2017-09',
+         '2016-10','2017-10',
+         '2016-11','2017-11',
+         '2015-12','2016-12','2017-12']
+plt.bar(x,amount_month_res,width=1.2)
+plt.xticks(x, x, rotation=70)      #调整横坐标倾斜度
+plt.ylabel('Amount')
+plt.xlabel('Year-Month')
+plt.show() 
