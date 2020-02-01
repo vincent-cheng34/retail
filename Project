@@ -111,10 +111,15 @@ amount_afternoon = 58653027.97 + 67055349.36 + 69643425.32 + 64108654.96 +  5061
 amount_evening = 41809627.43 + 44854627.50 + 40631594.72 + 10385821.73 + 2021491.47  #晚上的消费金额
 amount_beforedawn =  121891.20 + 124062.20 + 56770.20    #凌晨的消费金额
 
+number_hour = z['djh'].groupby(dtime_hour)    #根据消费的“小时”来划分单据发生
+number_hour.count()   #计算出各个时间的订单数
+number_morning = 305 + 17865
+number_noon =  30490 + 37087 
+number_afternoon = 40333 + 44996 + 49701 + 51131 + 46353 
+number_evening = 37663 + 31630 + 33316 + 28815 +  6573 + 1159
+number_beforedawn = 53 + 34 + 7
 
-
-
-plt.bar(['5-11','11-13','13-18','18-24','24-5'],[amount_morning,amount_noon,amount_afternoon,amount_evening,amount_beforedawn])
+plt.bar(['morning','noon','afternoon','evening','beforedawn'],[number_morning,number_noon,number_afternoon,number_evening,number_beforedawn])
 plt.xlabel('Period of Time')
 plt.ylabel('Number')
 plt.show()
