@@ -99,3 +99,20 @@ plt.xticks(x, x, rotation=75)      #调整横坐标倾斜度
 plt.ylabel('Amount')
 plt.xlabel('Year-Month')
 plt.show() 
+
+#任务2.3.1
+dtime_hour = pd.to_datetime(z['dtime']).dt.hour    #提取出消费时间的“小时”
+amount_hour = z['je'].groupby(dtime_hour)    #根据“小时”来计算各个小时的金额
+amount_hour1 = amount_hour.agg(np.sum)   #输出各个小时的消费金额
+amount_hour1 
+amount_morning = 547801.23+ 23925058.02+ 41099533.55   #早上的消费金额
+amount_noon =  50638448.43 + 54009197.32   #中午的消费金额
+amount_afternoon = 58653027.97 + 67055349.36 + 69643425.32 + 64108654.96 +  50613356.48   #下午的消费金额
+amount_evening = 41809627.43 + 44854627.50 + 40631594.72 + 10385821.73 + 2021491.47  #晚上的消费金额
+amount_beforedawn =  121891.20 + 124062.20 + 56770.20    #凌晨的消费金额
+plt.bar(['5-11','11-13','13-18','18-24','24-5'],[amount_morning,amount_noon,amount_afternoon,amount_evening,amount_beforedawn])
+plt.xlabel('Period of Time')
+plt.ylabel('Amount')
+plt.show()
+
+#任务2.3.2
