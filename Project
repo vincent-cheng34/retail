@@ -110,9 +110,13 @@ amount_noon =  50638448.43 + 54009197.32   #中午的消费金额
 amount_afternoon = 58653027.97 + 67055349.36 + 69643425.32 + 64108654.96 +  50613356.48   #下午的消费金额
 amount_evening = 41809627.43 + 44854627.50 + 40631594.72 + 10385821.73 + 2021491.47  #晚上的消费金额
 amount_beforedawn =  121891.20 + 124062.20 + 56770.20    #凌晨的消费金额
+
+
+
+
 plt.bar(['5-11','11-13','13-18','18-24','24-5'],[amount_morning,amount_noon,amount_afternoon,amount_evening,amount_beforedawn])
 plt.xlabel('Period of Time')
-plt.ylabel('Amount')
+plt.ylabel('Number')
 plt.show()
 
 #任务2.3.2
