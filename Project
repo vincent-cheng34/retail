@@ -169,3 +169,16 @@ m['入会时长'] = member_time
 m['消费水平'] = z['je']
 n = z['spmc']
 m['购物偏好'] = n
+dtime_quarter = pd.to_datetime(z['dtime']).dt.quarter 
+for i in range(len(dtime_quarter)):
+    line = dtime_quarter.iloc[i]
+    if line == 1:
+        m['购物季节偏好'] = '春季'
+    elif line == 2:
+        m['购物季节偏好'] = '夏季'
+    elif line == 3:
+        m['购物季节偏好'] = '秋季'
+    elif line == 4:
+        m['购物季节偏好'] = '冬季'
+
+m.loc[20]
