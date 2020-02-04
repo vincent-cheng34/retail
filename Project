@@ -149,3 +149,23 @@ plt.bar(x,[number_2015_spring,number_2015_summer,number_2015_fall,number_2015_wi
            number_2017_spring,number_2017_summer,number_2017_fall,number_2017_winter,number_2018_spring],width = 0.5)   #绘图
 plt.xticks(x,x,rotation=30)
 plt.show()
+
+#任务3
+m = pd.read_excel('./用户画像.xlsx')
+m['年龄'] = Age   #年龄
+m['积分'] = z['jf']   #积分
+m['卡号'] = z['kh']  #卡号
+for i in z['xb']:
+    if z['xb'].loc[i] == 0:
+        m['性别'] = '男'
+    else:
+        m['性别'] = '女'
+
+#任务3.2
+import datetime as dt   #导入模块
+Now_year = dt.datetime.today().year    #今天的日期
+member_time = Now_year - z['djsj'].dt.year   #入会时长
+m['入会时长'] = member_time
+m['消费水平'] = z['je']
+n = z['spmc']
+m['购物偏好'] = n
