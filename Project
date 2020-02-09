@@ -183,14 +183,64 @@ for i in range(len(dtime_quarter)):
 
 m.loc[20]
 
-#任务4
+#任务4  用户价值特征分析
 file = pd.read_excel('./Model.xlsx')
 file
 file['入会时长'] = m['入会时长']
 file['消费金额'] = m['消费水平']
 file['消费季节'] = dtime_quarter
+
+def Zscore(data):      #标准化处理，因为数据差距太大
+    data = (file - file.mean())/file.std()
+    data.columns = ["Z" + i for i in data.columns]
+    return data
+datafile = Zscore(file)
+datafile
+
 from sklearn.cluster import KMeans
 model = KMeans(n_clusters = 3).fit(file)
 model
 model.labels_
 model.cluster_centers_   #查看聚类中心
+
+r1 = pd.Series(model.labels_).value_counts()    #统计各个类别的数目
+r1
+
+r2 = pd.DataFrame(model.cluster_centers_)   #找出聚类中心
+r2
+
+r = pd.concat([r2,r1],axis = 1)     #连接
+r.columns = list(datafile.columns) + ['类别数目']   #重命名表头
+r
+
+r3 = pd.concat([datafile,pd.Series(model.labels_, index = datafile.index)],axis = 1)    #详细输出每个样本对应的类别
+r3.columns = list(datafile.columns) + ['聚类类别']    #重命名表头
+r3
+
+plt.style.use('ggplot')       #使用ggplot的绘图风格
+plt.rcParams['font.sans-serif'] = 'simkai'    #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False    #用来显示负号
+
+labels = np.array(['L','R','M'])    ##标签
+
+dataLenth = 3   #数据个数
+
+
+N = len(r2)   
+
+angles = np.linspace(0,2*np.pi,N,endpoint=False)   #设置雷达图角度
+data = pd.concat([r2,r2.ix[:,0]],axis = 1)   #雷达图一圈封闭起来
+angles = np.concatenate((angles,[angles[0]]))    #是雷达图一圈封闭起来
+
+fig = plt.figure(figsize = (6,6))    
+ax = fig.add_subplot(111,polar = True)    #*************这里一定要设置极坐标格式
+
+
+for i in range(0,3):
+    ax.plot(angles,data.iloc[i,:],'o-',linewidth = 2,label=['Custome 1','Customer 2','Customer 3'])   #画线
+    
+ax.set_thetagrids(angles * 180/np.pi, labels)   #添加每个特征的标签
+ax.set_title('客户特征分析图',va = 'bottom',fontproperties="SimHei")   #添加标题
+ax.set_rlim(-1,2)    #设置雷达图范围
+ax.grid(True)   #添加网格线
+plt.show()
