@@ -190,5 +190,7 @@ file['入会时长'] = m['入会时长']
 file['消费金额'] = m['消费水平']
 file['消费季节'] = dtime_quarter
 from sklearn.cluster import KMeans
-model = KMeans(n_clusters = 3)
-model.fit(file)
+model = KMeans(n_clusters = 3).fit(file)
+model
+model.labels_
+model.cluster_centers_   #查看聚类中心
