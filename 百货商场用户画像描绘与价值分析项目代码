@@ -243,5 +243,5 @@ ax.set_thetagrids(angles * 180/np.pi, labels)   #添加每个特征的标签
 ax.set_title('客户特征分析图',va = 'bottom',fontproperties="SimHei")   #添加标题
 ax.set_rlim(-1,2)    #设置雷达图范围
 ax.grid(True)   #添加网格线
-plt.legend(['Custome 1','Customer 2','Customer 3'])
+plt.legend(['Customer 1','Customer 2','Customer 3'])
 plt.show()
