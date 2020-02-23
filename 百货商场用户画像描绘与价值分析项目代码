@@ -183,6 +183,15 @@ for i in range(len(dtime_quarter)):
 
 m.loc[20]
 
+#词云图
+import wordcloud
+wc = wordcloud.WordCloud(scale=16,background_color = 'white',max_words = 100,colormap ='coolwarm')
+result = m.loc[0]
+X = wc.generate(str(result))
+wc.to_file(r'.\wordcloud.png')
+plt.imshow(X)
+
+
 #任务4  用户价值特征分析
 file = pd.read_excel('./Model.xlsx')
 file
